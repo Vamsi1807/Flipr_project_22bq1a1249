@@ -10,7 +10,7 @@ function Testimonials() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:8080/api/clients")
+            .get(`${process.env.REACT_APP_API_BASE_URL}api/clients`)
             .then(res => setTestimonials(res.data))
             .catch(err => console.error(err));
     }, []);

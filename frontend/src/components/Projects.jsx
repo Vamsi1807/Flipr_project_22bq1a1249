@@ -10,7 +10,7 @@ function Projects() {
     const contentRef = useRef(null);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/projects")
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/projects`)
             .then(res => setProjects(res.data))
             .catch(err => console.error(err));
     }, []);

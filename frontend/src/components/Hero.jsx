@@ -13,7 +13,7 @@ function Hero() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8080/api/contact", {
+        axios.post(`${process.env.REACT_APP_API_BASE_URL}api/contact`, {
             name,
             email,
             phone,

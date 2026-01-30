@@ -6,7 +6,7 @@ function Clients() {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/clients")
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/clients`)
             .then(res => setClients(res.data))
             .catch(err => console.error(err));
     }, []);

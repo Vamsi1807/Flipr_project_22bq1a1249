@@ -37,25 +37,25 @@ function Admin() {
     };
 
     const fetchProjects = () => {
-        axios.get("http://localhost:8080/api/projects")
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/projects`)
             .then(res => setProjects(res.data))
             .catch(err => console.error(err));
     };
 
     const fetchClients = () => {
-        axios.get("http://localhost:8080/api/clients")
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/clients`)
             .then(res => setClients(res.data))
             .catch(err => console.error(err));
     };
 
     const fetchContacts = () => {
-        axios.get("http://localhost:8080/api/contact", { headers: authHeaders })
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/contact`, { headers: authHeaders })
             .then(res => setContacts(res.data))
             .catch(err => console.error(err));
     };
 
     const fetchSubscriptions = () => {
-        axios.get("http://localhost:8080/api/subscribe", { headers: authHeaders })
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/subscribe`, { headers: authHeaders })
             .then(res => setSubscriptions(res.data))
             .catch(err => console.error(err));
     };
@@ -73,7 +73,7 @@ function Admin() {
         e.preventDefault();
         setStatus("");
 
-        axios.post("http://localhost:8080/api/projects", projectForm, { headers: authHeaders })
+        axios.post(`${process.env.REACT_APP_API_BASE_URL}api/projects`, projectForm, { headers: authHeaders })
             .then(() => {
                 setProjectForm({ name: "", type: "", location: "", imageUrl: "" });
                 setStatus("Project added successfully");
@@ -86,7 +86,7 @@ function Admin() {
         e.preventDefault();
         setStatus("");
 
-        axios.post("http://localhost:8080/api/clients", clientForm, { headers: authHeaders })
+        axios.post(`${process.env.REACT_APP_API_BASE_URL}api/clients`, clientForm, { headers: authHeaders })
             .then(() => {
                 setClientForm({ name: "", image: "", description: "", designation: "" });
                 setStatus("Client added successfully");
@@ -97,7 +97,7 @@ function Admin() {
 
     const deleteProject = (id) => {
         if (window.confirm("Are you sure you want to delete this project?")) {
-            axios.delete(`http://localhost:8080/api/projects/${id}`, { headers: authHeaders })
+            axios.delete(`${process.env.REACT_APP_API_BASE_URL}api/projects/${id}`, { headers: authHeaders })
                 .then(() => {
                     setStatus("Project deleted successfully");
                     fetchProjects();
@@ -108,7 +108,7 @@ function Admin() {
 
     const deleteClient = (id) => {
         if (window.confirm("Are you sure you want to delete this client?")) {
-            axios.delete(`http://localhost:8080/api/clients/${id}`, { headers: authHeaders })
+            axios.delete(`${process.env.REACT_APP_API_BASE_URL}api/clients/${id}`, { headers: authHeaders })
                 .then(() => {
                     setStatus("Client deleted successfully");
                     fetchClients();
