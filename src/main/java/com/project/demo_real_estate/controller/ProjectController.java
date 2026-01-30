@@ -22,7 +22,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.project.demo_real_estate.model.Project;
 import com.project.demo_real_estate.service.ProjectService;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/projects")
 public class ProjectController {

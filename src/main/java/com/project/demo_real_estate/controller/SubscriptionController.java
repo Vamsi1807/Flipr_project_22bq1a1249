@@ -19,7 +19,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.project.demo_real_estate.model.Subscription;
 import com.project.demo_real_estate.service.SubscriptionService;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/subscribe")
 public class SubscriptionController {

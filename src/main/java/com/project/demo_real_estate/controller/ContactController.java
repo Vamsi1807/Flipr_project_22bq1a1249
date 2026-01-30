@@ -19,7 +19,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.project.demo_real_estate.model.Contact;
 import com.project.demo_real_estate.service.ContactService;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/contact")
 public class ContactController {
