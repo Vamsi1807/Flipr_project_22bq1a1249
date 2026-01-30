@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/api";
 import { useEffect, useState } from "react";
 
 function Clients() {
@@ -6,7 +6,7 @@ function Clients() {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/clients`)
+        api.get(`clients`)
             .then(res => setClients(res.data))
             .catch(err => console.error(err));
     }, []);

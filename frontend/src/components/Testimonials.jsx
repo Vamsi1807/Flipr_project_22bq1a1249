@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import api from "../api/api";
 import './styles/Testimonials.css';
 
 function Testimonials() {
@@ -9,8 +9,8 @@ function Testimonials() {
     const contentRef = useRef(null);
 
     useEffect(() => {
-        axios
-            .get(`${process.env.REACT_APP_API_BASE_URL}api/clients`)
+        api
+            .get(`clients`)
             .then(res => setTestimonials(res.data))
             .catch(err => console.error(err));
     }, []);

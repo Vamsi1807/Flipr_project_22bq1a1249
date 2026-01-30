@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import './styles/Subscribe.css';
 
 function Subscribe() {
@@ -10,7 +10,7 @@ function Subscribe() {
     const handleSubscribe = (e) => {
         e.preventDefault();
 
-        axios.post(`${process.env.REACT_APP_API_BASE_URL}api/subscribe`, {
+        api.post(`subscribe`, {
             email
         })
             .then(() => {

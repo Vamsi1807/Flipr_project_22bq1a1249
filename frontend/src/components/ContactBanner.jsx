@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 
 function ContactBanner() {
     const [name, setName] = useState("");
@@ -12,7 +12,7 @@ function ContactBanner() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`${process.env.REACT_APP_API_BASE_URL}api/contact`, {
+        api.post(`contact`, {
             name,
             email,
             phone,

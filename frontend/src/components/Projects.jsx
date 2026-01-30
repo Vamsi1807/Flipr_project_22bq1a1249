@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/api";
 import { useEffect, useState, useRef } from "react";
 import './styles/Projects.css';
 
@@ -10,7 +10,7 @@ function Projects() {
     const contentRef = useRef(null);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_BASE_URL}api/projects`)
+        api.get(`projects`)
             .then(res => setProjects(res.data))
             .catch(err => console.error(err));
     }, []);
