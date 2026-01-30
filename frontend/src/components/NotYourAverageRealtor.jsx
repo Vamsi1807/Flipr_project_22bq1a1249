@@ -3,17 +3,17 @@ function NotYourAverageRealtor() {
         {
             name: "Agent 1",
             role: "Senior Agent",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop"
+            image: "/images/Lead Generation Landing page (Images)/Ellipse 29.svg"
         },
         {
             name: "Agent 2",
             role: "Property Manager",
-            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop"
+            image: "/images/Lead Generation Landing page (Images)/Ellipse 11.svg"
         },
         {
             name: "Agent 3",
             role: "Marketing Lead",
-            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop"
+            image: "/images/Lead Generation Landing page (Images)/Ellipse 31.svg"
         }
     ];
 

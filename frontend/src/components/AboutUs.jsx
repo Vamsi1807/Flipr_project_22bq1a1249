@@ -27,8 +27,8 @@ function AboutUs() {
     const aboutImages = [
         "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=300&fit=crop",
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1480074568708-e7b720bb3f5d?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1484542603127-984f4f7d14cb?w=400&h=300&fit=crop"
+        "https://media.istockphoto.com/id/1409298953/photo/real-estate-agents-shake-hands-after-the-signing-of-the-contract-agreement-is-complete.jpg?s=612x612&w=0&k=20&c=SFybbpGMB0wIoI0tJotFqptzAYK_mICVITNdQIXqnyc=",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-mzsCJmtR0KGqu2IgdK9ZT-Q6ouWwb3CRFw&s"
     ];
 
     useEffect(() => {
