@@ -35,6 +35,15 @@
 .why-icon {
   font-size: 3rem;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 .why-card h3 {
@@ -57,12 +66,17 @@
 }
 
 .about-images-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
+  padding: 20px;
+  justify-content: center;
+  min-width: 100%;
+  flex-wrap: nowrap;
+}
+
+.about-images-grid.scrollable {
+  justify-content: flex-start;
+  width: fit-content;
 }
 
 .grid-item {
@@ -71,6 +85,8 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   position: relative;
+  width: 400px;
+  flex-shrink: 0;
 }
 
 .grid-item img {
@@ -84,9 +100,57 @@
   transform: scale(1.02);
 }
 
-.grid-item-3,
-.grid-item-4 {
-  grid-column: 1 / -1;
+/* Carousel Wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  margin: 40px 0;
+}
+
+.carousel-container {
+  flex: 1;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel-btn {
+  background: transparent;
+  color: #1e40af;
+  border: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-size: 3rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: none;
+  position: relative;
+  padding: 10px;
+}
+
+.carousel-btn:hover {
+  color: #ff6b35;
+  transform: scale(1.2);
+}
+
+.carousel-btn:active {
+  transform: scale(1.1);
 }
 
 /* About Text Section */

@@ -1,19 +1,24 @@
+import { useRef, useState, useEffect } from 'react';
 import './styles/AboutUs.css';
 
 function AboutUs() {
+    const carouselRef = useRef(null);
+    const contentRef = useRef(null);
+    const [showButtons, setShowButtons] = useState(false);
+
     const whyChooseUs = [
         {
-            icon: "🏠",
+            icon: "/images/Lead Generation Landing page (Icons)/circle-dollar-sign.svg",
             title: "Potential ROI",
             description: "Maximize your investment returns with our expert market analysis and property recommendations"
         },
         {
-            icon: "🎨",
+            icon: "/images/Lead Generation Landing page (Icons)/paintbrush-2.svg",
             title: "Design",
             description: "Premium properties with exceptional architectural design and modern amenities"
         },
         {
-            icon: "📱",
+            icon: "/images/Lead Generation Landing page (Icons)/home.svg",
             title: "Marketing",
             description: "Strategic marketing solutions to showcase your property to qualified buyers"
         }
@@ -26,6 +31,33 @@ function AboutUs() {
         "https://images.unsplash.com/photo-1484542603127-984f4f7d14cb?w=400&h=300&fit=crop"
     ];
 
+    useEffect(() => {
+        const checkScrollable = () => {
+            if (contentRef.current) {
+                const isScrollable = contentRef.current.scrollWidth > contentRef.current.clientWidth;
+                setShowButtons(isScrollable);
+            }
+        };
+
+        const timer = setTimeout(checkScrollable, 100);
+        window.addEventListener("resize", checkScrollable);
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("resize", checkScrollable);
+        };
+    }, []);
+
+    const scroll = (direction) => {
+        if (carouselRef.current) {
+            const scrollAmount = 450;
+            if (direction === "left") {
+                carouselRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            } else {
+                carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            }
+        }
+    };
+
     return (
         <div className="about-us-complete">
             <section className="why-choose-us-section" id="success">
@@ -33,7 +65,9 @@ function AboutUs() {
                 <div className="why-cards-grid">
                     {whyChooseUs.map((item, index) => (
                         <div key={index} className="why-card">
-                            <div className="why-icon">{item.icon}</div>
+                            <div className="why-icon">
+                                <img src={item.icon} alt={item.title} />
+                            </div>
                             <h3>{item.title}</h3>
                             <p>{item.description}</p>
                         </div>
@@ -42,12 +76,20 @@ function AboutUs() {
             </section>
 
             <section className="about-images-grid-section">
-                <div className="about-images-grid">
-                    {aboutImages.map((img, index) => (
-                        <div key={index} className={`grid-item grid-item-${index + 1}`}>
-                            <img src={img} alt={`About ${index + 1}`} />
+                <div className="carousel-wrapper">
+                    {showButtons && <button className="carousel-btn carousel-btn-left" onClick={() => scroll("left")}>‹</button>}
+                    
+                    <div className="carousel-container" ref={carouselRef}>
+                        <div className={`about-images-grid ${showButtons ? 'scrollable' : ''}`} ref={contentRef}>
+                            {aboutImages.map((img, index) => (
+                                <div key={index} className={`grid-item grid-item-${index + 1}`}>
+                                    <img src={img} alt={`About ${index + 1}`} />
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+
+                    {showButtons && <button className="carousel-btn carousel-btn-right" onClick={() => scroll("right")}>›</button>}
                 </div>
             </section>
 

@@ -95,6 +95,28 @@ function Admin() {
             .catch(() => setStatus("Failed to add client (check admin token)"));
     };
 
+    const deleteProject = (id) => {
+        if (window.confirm("Are you sure you want to delete this project?")) {
+            axios.delete(`http://localhost:8080/api/projects/${id}`, { headers: authHeaders })
+                .then(() => {
+                    setStatus("Project deleted successfully");
+                    fetchProjects();
+                })
+                .catch(() => setStatus("Failed to delete project"));
+        }
+    };
+
+    const deleteClient = (id) => {
+        if (window.confirm("Are you sure you want to delete this client?")) {
+            axios.delete(`http://localhost:8080/api/clients/${id}`, { headers: authHeaders })
+                .then(() => {
+                    setStatus("Client deleted successfully");
+                    fetchClients();
+                })
+                .catch(() => setStatus("Failed to delete client"));
+        }
+    };
+
     return (
         <div className="admin-page">
             <div className="admin-header">
@@ -150,12 +172,19 @@ function Admin() {
                         <button type="submit">Add Project</button>
                     </form>
 
-                    <div className="admin-list">
+                    <h3>Existing Projects</h3>
+                    <div className="admin-cards-grid">
                         {projects.map(project => (
-                            <div key={project.id} className="admin-card">
-                                <strong>{project.name}</strong>
-                                <span>{project.type}</span>
-                                <span>{project.location}</span>
+                            <div key={project.id} className="admin-display-card">
+                                {project.imageUrl && (
+                                    <img src={project.imageUrl} alt={project.name} className="admin-card-image" />
+                                )}
+                                <div className="admin-card-content">
+                                    <h4>{project.name}</h4>
+                                    <p className="admin-card-type">{project.type}</p>
+                                    <p className="admin-card-location">📍 {project.location}</p>
+                                    <button className="admin-delete-btn" onClick={() => deleteProject(project.id)}>Delete</button>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -196,11 +225,19 @@ function Admin() {
                         <button type="submit">Add Client</button>
                     </form>
 
-                    <div className="admin-list">
+                    <h3>Existing Clients</h3>
+                    <div className="admin-cards-grid">
                         {clients.map(client => (
-                            <div key={client.id} className="admin-card">
-                                <strong>{client.name}</strong>
-                                <span>{client.designation}</span>
+                            <div key={client.id} className="admin-display-card">
+                                {client.image && (
+                                    <img src={client.image} alt={client.name} className="admin-card-image" />
+                                )}
+                                <div className="admin-card-content">
+                                    <h4>{client.name}</h4>
+                                    <p className="admin-card-type">{client.designation}</p>
+                                    <p className="admin-card-description">{client.description}</p>
+                                    <button className="admin-delete-btn" onClick={() => deleteClient(client.id)}>Delete</button>
+                                </div>
                             </div>
                         ))}
                     </div>

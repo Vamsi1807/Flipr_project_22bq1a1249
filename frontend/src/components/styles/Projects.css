@@ -113,6 +113,79 @@
   padding: 40px 20px;
 }
 
+.no-data {
+  color: #999;
+  font-size: 1.1rem;
+  padding: 40px 20px;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  margin: 40px 0;
+}
+
+.carousel-container {
+  flex: 1;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card-list {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  justify-content: center;
+  min-width: 100%;
+  flex-wrap: nowrap;
+}
+
+.card-list.scrollable {
+  justify-content: flex-start;
+  width: fit-content;
+}
+
+.carousel-btn {
+  background: transparent;
+  color: #1e40af;
+  border: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-size: 3rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: none;
+  position: relative;
+  padding: 10px;
+}
+
+.carousel-btn:hover {
+  color: #ff6b35;
+  transform: scale(1.2);
+}
+
+.carousel-btn:active {
+  transform: scale(1.1);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   #projects {
