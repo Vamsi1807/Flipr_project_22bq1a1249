@@ -23,4 +23,8 @@ public class ClientService {
     public Client saveClient(Client client) {
         return clientRepository.save(client);
     }
+
+    public void deleteClient(String id) {
+        clientRepository.deleteById(id);
+    }
 }
