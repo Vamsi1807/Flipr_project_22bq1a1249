@@ -11,10 +11,12 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
                 .allowedOrigins(
-                        "https://demo-real-estate-frontend.onrender.com"
+                        "https://demo-real-estate-frontend.onrender.com",
+                        "http://localhost:3000"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(false);
+                .allowCredentials(true)
+                .exposedHeaders("*");
     }
 }
